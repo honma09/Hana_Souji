@@ -13,5 +13,10 @@ public class Bullet : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         GetComponent<Rigidbody2D>().velocity = transform.up.normalized * speed;
+
+        if(transform.position.y > 5)
+        {
+            Destroy(gameObject);
+        }
     }
 }

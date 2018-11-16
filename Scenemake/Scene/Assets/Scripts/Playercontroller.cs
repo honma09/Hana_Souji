@@ -5,6 +5,7 @@ using UnityEngine;
 public class Playercontroller : MonoBehaviour {
 
     public float speed = 5;
+    public GameObject bullet;
     // Use this for initialization
     void Start()
     {
@@ -24,6 +25,11 @@ public class Playercontroller : MonoBehaviour {
 
         // 移動する向きとスピードを代入する
         GetComponent<Rigidbody2D>().velocity = direction * speed;
+
+        if (Input.GetKeyDown(KeyCode.Z))
+        {
+            Instantiate(bullet, transform.position, Quaternion.identity);
+        }
 
     }
 
