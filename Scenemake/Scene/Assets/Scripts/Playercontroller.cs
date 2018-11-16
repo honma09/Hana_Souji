@@ -6,6 +6,8 @@ public class Playercontroller : MonoBehaviour {
 
     public float speed = 5;
     public GameObject bullet;
+
+    private Vector2 player_pos;
     // Use this for initialization
     void Start()
     {
@@ -31,6 +33,16 @@ public class Playercontroller : MonoBehaviour {
             Instantiate(bullet, transform.position, Quaternion.identity);
         }
 
+        Clamp();
     }
 
+    void Clamp()
+    {
+        player_pos = transform.position; //プレイヤーの位置を取得
+
+        player_pos.x = Mathf.Clamp(player_pos.x, -2.2f, 2.2f); //x位置が常に範囲内か監視]
+        player_pos.y = Mathf.Clamp(player_pos.y, -4.0f, 4.0f);
+        transform.position = new Vector2(player_pos.x, player_pos.y); //範囲内であれば常にその位置がそのまま入る
+    }
 }
+
